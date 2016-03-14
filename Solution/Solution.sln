@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Application", "Application\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{97F9D6A8-E538-4AA5-94BC-3C5561036C0F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommonUtilities", "CommonUtilities\CommonUtilities.vcxproj", "{C66E6D97-B345-493E-8ECD-5259D41CF2CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{97F9D6A8-E538-4AA5-94BC-3C5561036C0F}.Debug|Win32.Build.0 = Debug|Win32
 		{97F9D6A8-E538-4AA5-94BC-3C5561036C0F}.Release|Win32.ActiveCfg = Release|Win32
 		{97F9D6A8-E538-4AA5-94BC-3C5561036C0F}.Release|Win32.Build.0 = Release|Win32
+		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Debug|Win32.Build.0 = Debug|Win32
+		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Release|Win32.ActiveCfg = Release|Win32
+		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
