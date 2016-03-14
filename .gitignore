@@ -33,3 +33,10 @@
 *.opensdf
 *.sdf
 *.suo
+
+*.vcxproj.user
+*.ilk
+*.pdb
+
+/temp
+/Solution/ipch
