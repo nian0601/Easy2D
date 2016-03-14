@@ -20,6 +20,8 @@ namespace Easy2D
 
 		bool ShouldQuit();
 
+		ResourceManager& GetResourceManager() const;
+
 	private:
 		void operator=(Engine&) = delete;
 
@@ -32,7 +34,10 @@ namespace Easy2D
 		ResourceManager* myResourceManager;
 		IGame& myGame;
 		bool myShouldQuit;
-
-		Sprite* mySprite;
 	};
+
+	inline ResourceManager& Engine::GetResourceManager() const
+	{
+		return *myResourceManager;
+	}
 }

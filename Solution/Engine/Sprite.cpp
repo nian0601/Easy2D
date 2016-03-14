@@ -21,10 +21,10 @@ namespace Easy2D
 	void Sprite::Render(const CU::Vector2f aPosition)
 	{
 		SDL_Rect rect;
-		rect.x = aPosition.x - mySize.x / 2.f;
-		rect.y = aPosition.y - mySize.y / 2.f;
-		rect.w = mySize.x;
-		rect.h = mySize.y;
+		rect.x = int(aPosition.x - mySize.x / 2.f);
+		rect.y = int(aPosition.y - mySize.y / 2.f);
+		rect.w = int(mySize.x);
+		rect.h = int(mySize.y);
 		SDL_RenderCopy(mySDLRenderer, mySDLTexture, NULL, &rect);
 	}
 

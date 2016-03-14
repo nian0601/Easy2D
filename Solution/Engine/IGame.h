@@ -6,8 +6,9 @@ namespace Easy2D
 	class IGame
 	{
 	public:
-		virtual void Init(Engine& aEngine){};
-		virtual void Update(float aDelta){};
-		virtual void Render(){};
+		virtual ~IGame(){};
+		virtual void Init(Engine& aEngine) = 0;
+		virtual void Update(float aDelta) = 0;
+		virtual void Render() = 0;
 	};
 }

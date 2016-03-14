@@ -17,13 +17,14 @@ namespace Easy2D
 		myRenderer = new Renderer(mySDLWindow);
 		myResourceManager = new ResourceManager(myRenderer->GetSDLRenderer());
 
-		mySprite = myResourceManager->GetSprite("Data/test.bmp");
 		myGame.Init(*this);
 	}
 
 
 	Engine::~Engine()
 	{
+		delete myResourceManager;
+		delete myRenderer;
 		SDL_DestroyWindow(mySDLWindow);
 		SDL_Quit();
 	}
@@ -60,7 +61,7 @@ namespace Easy2D
 
 	void Engine::Update()
 	{
-		myGame.Update(1.f / 30.f);
+		myGame.Update(1.f / 300.f);
 	}
 
 	void Engine::Render()
@@ -68,8 +69,6 @@ namespace Easy2D
 		myRenderer->Clear();
 
 		myGame.Render();
-
-		mySprite->Render(CU::Vector2f(200.f, 200.f));
 
 		myRenderer->Present();
 	}

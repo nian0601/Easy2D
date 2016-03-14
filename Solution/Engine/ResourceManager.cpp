@@ -15,6 +15,10 @@ namespace Easy2D
 	
 	ResourceManager::~ResourceManager()
 	{
+		for (auto it = mySprites.begin(); it != mySprites.end(); ++it)
+		{
+			delete it->second;
+		}
 	}
 
 	Sprite* ResourceManager::GetSprite(const std::string& aPath)
@@ -46,8 +50,8 @@ namespace Easy2D
 				printf("Failed to create texture from %s! Error: %s", aPath.c_str(), SDL_GetError());
 			}
 
-			size.x = loadedSurface->w;
-			size.y = loadedSurface->h;
+			size.x = float(loadedSurface->w);
+			size.y = float(loadedSurface->h);
 
 			SDL_FreeSurface(loadedSurface);
 		}
