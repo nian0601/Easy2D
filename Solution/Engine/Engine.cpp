@@ -69,7 +69,7 @@ namespace Easy2D
 
 		myGame.Render();
 
-		mySprite->Render();
+		mySprite->Render(CU::Vector2f(200.f, 200.f));
 
 		myRenderer->Present();
 	}

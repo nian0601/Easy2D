@@ -29,13 +29,9 @@ namespace Easy2D
 
 	void ResourceManager::LoadSprite(const std::string& aPath)
 	{
-		SDL_Texture* texture = CreateTexture(aPath);
-		mySprites[aPath] = new Sprite(texture, mySDLRenderer);
-	}
+		CU::Vector2f size;
 
-	SDL_Texture* ResourceManager::CreateTexture(const std::string& aPath)
-	{
-		SDL_Texture* newTexture = NULL;
+		SDL_Texture* texture = NULL;
 		SDL_Surface* loadedSurface = SDL_LoadBMP(aPath.c_str());
 
 		if (loadedSurface == NULL)
@@ -44,15 +40,18 @@ namespace Easy2D
 		}
 		else
 		{
-			newTexture = SDL_CreateTextureFromSurface(mySDLRenderer, loadedSurface);
-			if (newTexture == NULL)
+			texture = SDL_CreateTextureFromSurface(mySDLRenderer, loadedSurface);
+			if (texture == NULL)
 			{
 				printf("Failed to create texture from %s! Error: %s", aPath.c_str(), SDL_GetError());
 			}
 
+			size.x = loadedSurface->w;
+			size.y = loadedSurface->h;
+
 			SDL_FreeSurface(loadedSurface);
 		}
 
-		return newTexture;
+		mySprites[aPath] = new Sprite(texture, mySDLRenderer, size);
 	}
 }

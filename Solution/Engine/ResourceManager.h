@@ -6,6 +6,11 @@
 struct SDL_Renderer;
 struct SDL_Texture;
 
+namespace CU
+{
+	class Vector2f;
+}
+
 namespace Easy2D
 {
 	class Sprite;
@@ -19,7 +24,6 @@ namespace Easy2D
 
 	private:
 		void LoadSprite(const std::string& aPath);
-		SDL_Texture* CreateTexture(const std::string& aPath);
 
 		std::unordered_map<std::string, Sprite*> mySprites;
 		SDL_Renderer* mySDLRenderer;
