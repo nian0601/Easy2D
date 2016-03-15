@@ -55,6 +55,7 @@ namespace CU
 
 		typedef ObjectType* iterator;
 		typedef const ObjectType* const_iterator;
+
 		iterator begin() { return &myData[0]; }
 		const_iterator begin() const { return &myData[0]; }
 		iterator end() { return &myData[myCurrentSize]; }

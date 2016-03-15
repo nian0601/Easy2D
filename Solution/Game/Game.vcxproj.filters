@@ -2,23 +2,26 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Game.h" />
-    <ClInclude Include="RenderSystem.h">
-      <Filter>EntitySystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ISystem.h">
-      <Filter>EntitySystem</Filter>
-    </ClInclude>
     <ClInclude Include="Enums.h" />
-    <ClInclude Include="SystemManager.h">
+    <ClInclude Include="RenderComponentManager.h">
+      <Filter>EntitySystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionComponentManager.h">
+      <Filter>EntitySystem</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponentManager.h">
       <Filter>EntitySystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="RenderSystem.cpp">
+    <ClCompile Include="RenderComponentManager.cpp">
       <Filter>EntitySystem</Filter>
     </ClCompile>
-    <ClCompile Include="SystemManager.cpp">
+    <ClCompile Include="PositionComponentManager.cpp">
+      <Filter>EntitySystem</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponentManager.cpp">
       <Filter>EntitySystem</Filter>
     </ClCompile>
   </ItemGroup>

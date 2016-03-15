@@ -77,14 +77,15 @@
   <ItemGroup>
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="ISystem.h" />
-    <ClInclude Include="RenderSystem.h" />
-    <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="MovementComponentManager.h" />
+    <ClInclude Include="PositionComponentManager.h" />
+    <ClInclude Include="RenderComponentManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="MovementComponentManager.cpp" />
+    <ClCompile Include="PositionComponentManager.cpp" />
+    <ClCompile Include="RenderComponentManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonUtilities\CommonUtilities.vcxproj">

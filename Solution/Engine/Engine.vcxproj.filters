@@ -8,6 +8,7 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -15,13 +16,24 @@
     <ClInclude Include="stdafx.h">
       <Filter>Precompile</Filter>
     </ClInclude>
-    <ClInclude Include="IGame.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Easy2DEnums.h" />
+    <ClInclude Include="IComponentManager.h">
+      <Filter>GameInterfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IGame.h">
+      <Filter>GameInterfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Precompile">
       <UniqueIdentifier>{7659712d-b46e-45c2-ba8e-44d5427e354a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameInterfaces">
+      <UniqueIdentifier>{1c94e366-befe-402b-8be1-79f49c231c02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

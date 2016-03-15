@@ -7,7 +7,6 @@ namespace Easy2D
 	class Sprite;
 }
 
-class SystemManager;
 class Game : public Easy2D::IGame
 {
 public:
@@ -17,8 +16,5 @@ public:
 	void Init(Easy2D::Engine& aEngine) override;
 	void Update(float aDelta) override;
 	void Render() override;
-
-private:
-	SystemManager* mySystemManager;
 };
 

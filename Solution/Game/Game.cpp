@@ -2,8 +2,9 @@
 #include <Engine.h>
 #include <ResourceManager.h>
 #include <Sprite.h>
-#include "SystemManager.h"
-#include "RenderSystem.h"
+#include "RenderComponentManager.h"
+#include "PositionComponentManager.h"
+#include "MovementComponentManager.h"
 Game::Game()
 {
 }
@@ -15,22 +16,25 @@ Game::~Game()
 
 void Game::Init(Easy2D::Engine& aEngine)
 {
-	mySystemManager = new SystemManager();
+	PositionComponentManager& positionManager = aEngine.CreateComponentManager<PositionComponentManager>();
+	RenderComponentManager& renderManager = aEngine.CreateComponentManager<RenderComponentManager>();
+	MovementComponentManager& movementManager = aEngine.CreateComponentManager<MovementComponentManager>();
 
-	unsigned int entity = mySystemManager->Create();
-	unsigned int entity2 = mySystemManager->Create();
-	unsigned int entity3 = mySystemManager->Create();
-	mySystemManager->GetRenderSystem()->Create(entity, "Data/test.bmp", aEngine.GetResourceManager());
-	mySystemManager->GetRenderSystem()->Create(entity2, "Data/test.bmp", aEngine.GetResourceManager());
-	mySystemManager->GetRenderSystem()->Create(entity3, "Data/test.bmp", aEngine.GetResourceManager());
+	Entity entity = aEngine.CreateEntity();
+	renderManager.Create(entity, "Data/test.bmp", aEngine.GetResourceManager());
+	positionManager.Create(entity, CU::Vector2f(200.f, 200.f));
+	movementManager.Create(entity, Easy2D::eKey::_W, Easy2D::eKey::_S, Easy2D::eKey::_A, Easy2D::eKey::_D);
+
+	Entity entity2 = aEngine.CreateEntity();
+	renderManager.Create(entity2, "Data/test.bmp", aEngine.GetResourceManager());
+	positionManager.Create(entity2, CU::Vector2f(600.f, 200.f));
+	movementManager.Create(entity2, Easy2D::eKey::_I, Easy2D::eKey::_K, Easy2D::eKey::_J, Easy2D::eKey::_L);
 }
 
 void Game::Update(float aDelta)
 {
-	mySystemManager->Update(aDelta);
 }
 
 void Game::Render()
 {
-	mySystemManager->Render();
 }
