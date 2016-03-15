@@ -7,6 +7,7 @@ namespace Easy2D
 	class Sprite;
 }
 
+class SystemManager;
 class Game : public Easy2D::IGame
 {
 public:
@@ -18,10 +19,6 @@ public:
 	void Render() override;
 
 private:
-	Easy2D::Sprite* mySprite;
-	Easy2D::Sprite* mySprite2;
-
-	CU::Vector2f myPosition;
-	CU::Vector2f myPosition2;
+	SystemManager* mySystemManager;
 };
 
