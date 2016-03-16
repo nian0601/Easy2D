@@ -27,6 +27,7 @@
     <ClInclude Include="IGame.h">
       <Filter>GameInterfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Rect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Precompile">

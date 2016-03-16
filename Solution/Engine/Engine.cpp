@@ -25,7 +25,7 @@ namespace Easy2D
 
 		myGame.Init(*this);
 
-		myTotalTime = SDL_GetTicks();
+		myTotalTime = float(SDL_GetTicks());
 		myPreviousTime = myTotalTime;
 	}
 
@@ -63,7 +63,7 @@ namespace Easy2D
 				} 
 			}
 
-			myTotalTime = SDL_GetTicks();
+			myTotalTime = float(SDL_GetTicks());
 
 			Update();
 			Render();

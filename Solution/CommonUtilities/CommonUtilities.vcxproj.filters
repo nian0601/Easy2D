@@ -6,15 +6,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Vector2f.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="GrowingArray.h" />
     <ClInclude Include="StaticArray.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Dummy.cpp" />
   </ItemGroup>
 </Project>

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <IComponentManager.h>
-#include <unordered_map>
 #include <string>
 #include <GrowingArray.h>
+#include <StaticArray.h>
 
 namespace Easy2D
 {
@@ -33,7 +33,6 @@ private:
 		Easy2D::Sprite* mySprite;
 	};
 
-	std::unordered_map<Entity, int> myLookup;
 	CU::GrowingArray<RenderData> myData;
 	PositionComponentManager& myPositionComponentManager;
 };

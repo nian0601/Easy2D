@@ -170,18 +170,18 @@ namespace CU
 	GA_TEMPLATE
 	inline ObjectType& GA_TYPE::operator[](const SizeType& aIndex)
 	{
-		assert(myIsInit == true && "Not initialized, run Init first.");
-		assert(aIndex >= 0 && "Index has to be 0 or more.");
-		assert(aIndex < myCurrentSize && "a index out of bounds!");
+		//assert(myIsInit == true && "Not initialized, run Init first.");
+		//assert(aIndex >= 0 && "Index has to be 0 or more.");
+		//assert(aIndex < myCurrentSize && "a index out of bounds!");
 		return myData[aIndex];
 	}
 
 	GA_TEMPLATE
 	inline const ObjectType& GA_TYPE::operator[](const SizeType& aIndex) const
 	{
-		assert(myIsInit == true && "Not initialized, run Init first.");
-		assert(aIndex >= 0 && "Index has to be 0 or more.");
-		assert(aIndex < myCurrentSize && "a index out of bounds!");
+		//assert(myIsInit == true && "Not initialized, run Init first.");
+		//assert(aIndex >= 0 && "Index has to be 0 or more.");
+		//assert(aIndex < myCurrentSize && "a index out of bounds!");
 		return myData[aIndex];
 	}
 

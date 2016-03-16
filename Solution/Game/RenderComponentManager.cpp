@@ -23,7 +23,6 @@ void RenderComponentManager::Create(Entity aEntity, const std::string& aPath, Ea
 	data.myOwner = aEntity;
 	data.mySprite = aResourceManager.GetSprite(aPath);
 	myData.Add(data);
-	myLookup[aEntity] = myData.Size() - 1;
 }
 
 void RenderComponentManager::Update(float aDelta)

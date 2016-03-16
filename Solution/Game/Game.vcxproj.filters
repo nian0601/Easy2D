@@ -12,6 +12,9 @@
     <ClInclude Include="MovementComponentManager.h">
       <Filter>EntitySystem</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionComponentManager.h">
+      <Filter>EntitySystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
@@ -22,6 +25,9 @@
       <Filter>EntitySystem</Filter>
     </ClCompile>
     <ClCompile Include="MovementComponentManager.cpp">
+      <Filter>EntitySystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponentManager.cpp">
       <Filter>EntitySystem</Filter>
     </ClCompile>
   </ItemGroup>

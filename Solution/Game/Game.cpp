@@ -5,6 +5,9 @@
 #include "RenderComponentManager.h"
 #include "PositionComponentManager.h"
 #include "MovementComponentManager.h"
+#include "CollisionComponentManager.h"
+#include <Rect.h>
+
 Game::Game()
 {
 }
@@ -19,8 +22,10 @@ void Game::Init(Easy2D::Engine& aEngine)
 	PositionComponentManager& positionManager = aEngine.CreateComponentManager<PositionComponentManager>();
 	RenderComponentManager& renderManager = aEngine.CreateComponentManager<RenderComponentManager>();
 	MovementComponentManager& movementManager = aEngine.CreateComponentManager<MovementComponentManager>();
+	CollisionComponentManager& collisionManager = aEngine.CreateComponentManager<CollisionComponentManager>();
 
-	for (int i = 0; i < 1000; ++i)
+	for (int i = 0; i < MAX_ENTITY_COUNT; ++i)
+	//for (int i = 0; i < 2000; ++i)
 	{
 		CU::Vector2f pos;
 		pos.x = float(rand() % 1280);
@@ -33,21 +38,13 @@ void Game::Init(Easy2D::Engine& aEngine)
 		Entity entity = aEngine.CreateEntity();
 		renderManager.Create(entity, "Data/ball.bmp", aEngine.GetResourceManager());
 		positionManager.Create(entity, pos);
-		movementManager.Create(entity, velocity/*Easy2D::eKey::_W, Easy2D::eKey::_S, Easy2D::eKey::_A, Easy2D::eKey::_D*/);
+		movementManager.Create(entity, velocity);
+		//collisionManager.Create(entity, Easy2D::Rect({ 32.f, 32.f }));
+		//collisionManager.Create(entity, 16.f);
 	}
-
-	//Entity entity = aEngine.CreateEntity();
-	//renderManager.Create(entity, "Data/ball.bmp", aEngine.GetResourceManager());
-	//positionManager.Create(entity, CU::Vector2f(200.f, 200.f));
-	//movementManager.Create(entity, CU::Vector2f(200.f, 200.f)/*Easy2D::eKey::_W, Easy2D::eKey::_S, Easy2D::eKey::_A, Easy2D::eKey::_D*/);
-
-	//Entity entity2 = aEngine.CreateEntity();
-	//renderManager.Create(entity2, "Data/ball.bmp", aEngine.GetResourceManager());
-	//positionManager.Create(entity2, CU::Vector2f(600.f, 200.f));
-	//movementManager.Create(entity2, CU::Vector2f(-200.f, -200.f)/*Easy2D::eKey::_I, Easy2D::eKey::_K, Easy2D::eKey::_J, Easy2D::eKey::_L*/);
 }
 
-void Game::Update(float aDelta)
+void Game::Update(float)
 {
 }
 

@@ -19,7 +19,7 @@ MovementComponentManager::~MovementComponentManager()
 {
 }
 
-void MovementComponentManager::Create(Entity aEntity, const CU::Vector2f& aStartVelocity/*, Easy2D::eKey aUpKey, Easy2D::eKey aDownKey, Easy2D::eKey aLeftKey, Easy2D::eKey aRightKey*/)
+void MovementComponentManager::Create(Entity aEntity, const CU::Vector2f& aStartVelocity)
 {
 	MovementData data;
 	data.myOwner = aEntity;
@@ -30,7 +30,6 @@ void MovementComponentManager::Create(Entity aEntity, const CU::Vector2f& aStart
 	data.myVelocity = aStartVelocity;
 
 	myData.Add(data);
-	myLookup[aEntity] = myData.Size() - 1;
 }
 
 void MovementComponentManager::Update(float aDelta)
@@ -38,26 +37,8 @@ void MovementComponentManager::Update(float aDelta)
 	for (MovementData& data : myData)
 	{
 		CU::Vector2f pos = myPositionComponentManager.GetPosition(data.myOwner);
-		
-		/*if (myInput.KeyIsPressed(data.myUpKey))
-		{
-			pos.y -= 10.f * aDelta;
-		}
-		else if (myInput.KeyIsPressed(data.myDownKey))
-		{
-			pos.y += 10.f * aDelta;
-		}
-		else if (myInput.KeyIsPressed(data.myLeftKey))
-		{
-			pos.x -= 10.f * aDelta;
-		}
-		else if (myInput.KeyIsPressed(data.myRightKey))
-		{
-			pos.x += 10.f * aDelta;
-		}*/
 
-		pos.x += data.myVelocity.x * aDelta;
-		pos.y += data.myVelocity.y * aDelta;
+		pos += data.myVelocity * aDelta;
 
 		if (Outside(pos.x, 0.f, myWindowSize.x))
 		{
@@ -84,5 +65,15 @@ unsigned int MovementComponentManager::GetID()
 bool MovementComponentManager::Outside(float aObjectPos, float aMinPos, float aMaxPos) const
 {
 	return aObjectPos < aMinPos || aObjectPos > aMaxPos;
+}
+
+void MovementComponentManager::Reflect(Entity aEntity)
+{
+	myData[aEntity].myVelocity *= -1.f;
+}
+
+void MovementComponentManager::SetVelocity(Entity aEntity, const CU::Vector2f& aVelocity)
+{
+	myData[aEntity].myVelocity = aVelocity;
 }
 

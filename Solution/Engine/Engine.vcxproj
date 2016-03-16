@@ -106,6 +106,7 @@
     <ClInclude Include="IComponentManager.h" />
     <ClInclude Include="IGame.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sprite.h" />

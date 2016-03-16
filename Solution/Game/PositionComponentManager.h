@@ -1,9 +1,10 @@
 #pragma once
 
 #include <Vector2f.h>
-#include <unordered_map>
 #include <IComponentManager.h>
 #include <GrowingArray.h>
+#include <StaticArray.h>
+#include <unordered_map>
 
 class PositionComponentManager : public Easy2D::IComponentManager
 {
@@ -23,7 +24,8 @@ private:
 	PositionComponentManager(PositionComponentManager&) = delete;
 	void operator=(PositionComponentManager&) = delete;
 
-	std::unordered_map<Entity, int> myLookup;
+	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;
+	//std::unordered_map<Entity, int> myLookup;
 	CU::GrowingArray<CU::Vector2f> myPositions;
 };
 
