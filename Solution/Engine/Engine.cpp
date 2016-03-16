@@ -16,6 +16,7 @@ namespace Easy2D
 		, myGame(aGame)
 		, myComponentManagers(16)
 		, myNextEntityID(0)
+		, myWindowSize(1280.f, 720.f)
 	{
 		SetupSDL();
 		myRenderer = new Renderer(mySDLWindow);
@@ -23,6 +24,9 @@ namespace Easy2D
 		myInput = new Input();
 
 		myGame.Init(*this);
+
+		myTotalTime = SDL_GetTicks();
+		myPreviousTime = myTotalTime;
 	}
 
 
@@ -59,8 +63,12 @@ namespace Easy2D
 				} 
 			}
 
+			myTotalTime = SDL_GetTicks();
+
 			Update();
 			Render();
+
+			myPreviousTime = myTotalTime;
 		}
 	}
 
@@ -96,7 +104,8 @@ namespace Easy2D
 		}
 		else
 		{
-			mySDLWindow = SDL_CreateWindow("SDL_Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+			mySDLWindow = SDL_CreateWindow("SDL Entity System", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED
+				, int(myWindowSize.x), int(myWindowSize.y), SDL_WINDOW_SHOWN);
 			if (mySDLWindow == NULL)
 			{
 				printf("SDL could not create window! Error: %s", SDL_GetError());
@@ -106,12 +115,13 @@ namespace Easy2D
 
 	void Engine::Update()
 	{
+		float deltaTime = (myTotalTime - myPreviousTime) / 1000.f;
 		for each (IComponentManager* manager in myComponentManagers)
 		{
-			manager->Update(1.f / 300.f);
+			manager->Update(deltaTime);
 		}
 
-		myGame.Update(1.f / 300.f);
+		myGame.Update(deltaTime);
 	}
 
 	void Engine::Render()

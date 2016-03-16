@@ -2,6 +2,7 @@
 
 #include "Defines.h"
 #include <GrowingArray.h>
+#include <Vector2f.h>
 
 struct SDL_Window;
 
@@ -33,6 +34,8 @@ namespace Easy2D
 
 		IComponentManager& GetComponentManager(unsigned int aID) const;
 
+		const CU::Vector2f& GetWindowSize() const;
+
 	private:
 		Engine(Engine&) = delete;
 		void operator=(Engine&) = delete;
@@ -46,10 +49,14 @@ namespace Easy2D
 		ResourceManager* myResourceManager;
 		Input* myInput;
 		IGame& myGame;
+		CU::Vector2f myWindowSize;
 		bool myShouldQuit;
 
 		CU::GrowingArray<IComponentManager*> myComponentManagers;
 		Entity myNextEntityID;
+
+		float myTotalTime;
+		float myPreviousTime;
 	};
 
 	inline ResourceManager& Engine::GetResourceManager() const
@@ -68,5 +75,10 @@ namespace Easy2D
 		T* manager = new T(*this);
 		myComponentManagers.Add(manager);
 		return *manager;
+	}
+
+	inline const CU::Vector2f& Engine::GetWindowSize() const
+	{
+		return myWindowSize;
 	}
 }

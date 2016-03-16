@@ -10,6 +10,7 @@ MovementComponentManager::MovementComponentManager(Easy2D::Engine& aEngine)
 	, myData(16)
 	, myInput(aEngine.GetInput())
 	, myPositionComponentManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION)))
+	, myWindowSize(aEngine.GetWindowSize())
 {
 }
 
@@ -18,14 +19,15 @@ MovementComponentManager::~MovementComponentManager()
 {
 }
 
-void MovementComponentManager::Create(Entity aEntity, Easy2D::eKey aUpKey, Easy2D::eKey aDownKey, Easy2D::eKey aLeftKey, Easy2D::eKey aRightKey)
+void MovementComponentManager::Create(Entity aEntity, const CU::Vector2f& aStartVelocity/*, Easy2D::eKey aUpKey, Easy2D::eKey aDownKey, Easy2D::eKey aLeftKey, Easy2D::eKey aRightKey*/)
 {
 	MovementData data;
 	data.myOwner = aEntity;
-	data.myUpKey = aUpKey;
+	/*data.myUpKey = aUpKey;
 	data.myDownKey = aDownKey;
 	data.myLeftKey = aLeftKey;
-	data.myRightKey = aRightKey;
+	data.myRightKey = aRightKey;*/
+	data.myVelocity = aStartVelocity;
 
 	myData.Add(data);
 	myLookup[aEntity] = myData.Size() - 1;
@@ -37,7 +39,7 @@ void MovementComponentManager::Update(float aDelta)
 	{
 		CU::Vector2f pos = myPositionComponentManager.GetPosition(data.myOwner);
 		
-		if (myInput.KeyIsPressed(data.myUpKey))
+		/*if (myInput.KeyIsPressed(data.myUpKey))
 		{
 			pos.y -= 10.f * aDelta;
 		}
@@ -52,6 +54,18 @@ void MovementComponentManager::Update(float aDelta)
 		else if (myInput.KeyIsPressed(data.myRightKey))
 		{
 			pos.x += 10.f * aDelta;
+		}*/
+
+		pos.x += data.myVelocity.x * aDelta;
+		pos.y += data.myVelocity.y * aDelta;
+
+		if (Outside(pos.x, 0.f, myWindowSize.x))
+		{
+			data.myVelocity.x *= -1.f;
+		}
+		if (Outside(pos.y, 0.f, myWindowSize.y))
+		{
+			data.myVelocity.y *= -1.f;
 		}
 
 		myPositionComponentManager.SetPosition(data.myOwner, pos);
@@ -65,5 +79,10 @@ void MovementComponentManager::Render()
 unsigned int MovementComponentManager::GetID()
 {
 	return eComponent::MOVEMENT;
+}
+
+bool MovementComponentManager::Outside(float aObjectPos, float aMinPos, float aMaxPos) const
+{
+	return aObjectPos < aMinPos || aObjectPos > aMaxPos;
 }
 

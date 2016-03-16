@@ -18,7 +18,7 @@ void PositionComponentManager::Create(Entity aEntity, const CU::Vector2f& aStart
 	myLookup[aEntity] = myPositions.Size() - 1;
 }
 
-void PositionComponentManager::Update(float)
+void PositionComponentManager::Update(float aDelta)
 {
 }
 
