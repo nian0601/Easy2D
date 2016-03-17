@@ -24,8 +24,8 @@ void Game::Init(Easy2D::Engine& aEngine)
 	MovementComponentManager& movementManager = aEngine.CreateComponentManager<MovementComponentManager>();
 	CollisionComponentManager& collisionManager = aEngine.CreateComponentManager<CollisionComponentManager>();
 
-	for (int i = 0; i < MAX_ENTITY_COUNT; ++i)
-	//for (int i = 0; i < 2000; ++i)
+	//for (int i = 0; i < MAX_ENTITY_COUNT; ++i)
+	for (int i = 0; i < 2000; ++i)
 	{
 		CU::Vector2f pos;
 		pos.x = float(rand() % 1280);
@@ -39,7 +39,7 @@ void Game::Init(Easy2D::Engine& aEngine)
 		renderManager.Create(entity, "Data/ball.bmp", aEngine.GetResourceManager());
 		positionManager.Create(entity, pos);
 		movementManager.Create(entity, velocity);
-		//collisionManager.Create(entity, Easy2D::Rect({ 32.f, 32.f }));
+		collisionManager.Create(entity, Easy2D::Rect({ 8.f, 8.f }));
 		//collisionManager.Create(entity, 16.f);
 	}
 }
