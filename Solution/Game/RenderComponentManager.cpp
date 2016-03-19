@@ -25,6 +25,14 @@ void RenderComponentManager::Create(Entity aEntity, const std::string& aPath, Ea
 	myData.Add(data);
 }
 
+void RenderComponentManager::OnBeginFrame()
+{
+	for (RenderData& data : myData)
+	{
+		data.myPosition = myPositionComponentManager.GetPosition(data.myOwner);
+	}
+}
+
 void RenderComponentManager::Update(float aDelta)
 {
 	aDelta;
@@ -34,8 +42,7 @@ void RenderComponentManager::Render()
 {
 	for each (const RenderData& data in myData)
 	{
-		const CU::Vector2f& pos = myPositionComponentManager.GetPosition(data.myOwner);
-		data.mySprite->Render(pos);
+		data.mySprite->Render(data.myPosition);
 	}
 }
 

@@ -23,35 +23,51 @@ void MovementComponentManager::Create(Entity aEntity, const CU::Vector2f& aStart
 {
 	MovementData data;
 	data.myOwner = aEntity;
-	/*data.myUpKey = aUpKey;
-	data.myDownKey = aDownKey;
-	data.myLeftKey = aLeftKey;
-	data.myRightKey = aRightKey;*/
 	data.myVelocity = aStartVelocity;
 
 	myData.Add(data);
 }
 
+
+void MovementComponentManager::OnBeginFrame()
+{
+	for (MovementData& data : myData)
+	{
+		data.myPosition = myPositionComponentManager.GetPosition(data.myOwner);
+	}
+}
+
+
 void MovementComponentManager::Update(float aDelta)
 {
 	for (MovementData& data : myData)
 	{
-		CU::Vector2f pos = myPositionComponentManager.GetPosition(data.myOwner);
+		//CU::Vector2f pos = myPositionComponentManager.GetPosition(data.myOwner);
+		//pos += data.myVelocity * aDelta;
 
-		pos += data.myVelocity * aDelta;
+		data.myPosition += data.myVelocity * aDelta;
 
-		if (Outside(pos.x, 0.f, myWindowSize.x))
+		if (Outside(data.myPosition.x, 0.f, myWindowSize.x))
 		{
 			data.myVelocity.x *= -1.f;
 		}
-		if (Outside(pos.y, 0.f, myWindowSize.y))
+		if (Outside(data.myPosition.y, 0.f, myWindowSize.y))
 		{
 			data.myVelocity.y *= -1.f;
 		}
 
-		myPositionComponentManager.SetPosition(data.myOwner, pos);
+		myPositionComponentManager.SetPosition(data.myOwner, data.myPosition);
 	}
 }
+
+void MovementComponentManager::OnEndFrame()
+{
+	for each (const MovementData& data in myData)
+	{
+		myPositionComponentManager.SetPosition(data.myOwner, data.myPosition);
+	}
+}
+
 
 void MovementComponentManager::Render()
 {
@@ -62,18 +78,12 @@ unsigned int MovementComponentManager::GetID()
 	return eComponent::MOVEMENT;
 }
 
-bool MovementComponentManager::Outside(float aObjectPos, float aMinPos, float aMaxPos) const
-{
-	return aObjectPos < aMinPos || aObjectPos > aMaxPos;
-}
-
-void MovementComponentManager::Reflect(Entity aEntity)
-{
-	myData[aEntity].myVelocity *= -1.f;
-}
-
 void MovementComponentManager::SetVelocity(Entity aEntity, const CU::Vector2f& aVelocity)
 {
 	myData[aEntity].myVelocity = aVelocity;
 }
 
+bool MovementComponentManager::Outside(float aObjectPos, float aMinPos, float aMaxPos) const
+{
+	return aObjectPos < aMinPos || aObjectPos > aMaxPos;
+}

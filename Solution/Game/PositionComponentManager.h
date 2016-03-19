@@ -13,7 +13,10 @@ public:
 	~PositionComponentManager();
 
 	void Create(Entity aEntity, const CU::Vector2f& aStartPosition);
+
+	void OnBeginFrame() override {};
 	void Update(float) override;
+	void OnEndFrame() override {};
 	void Render() override;
 	unsigned int GetID() override;
 
@@ -25,7 +28,6 @@ private:
 	void operator=(PositionComponentManager&) = delete;
 
 	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;
-	//std::unordered_map<Entity, int> myLookup;
 	CU::GrowingArray<CU::Vector2f> myPositions;
 };
 

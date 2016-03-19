@@ -4,6 +4,7 @@
 #include <string>
 #include <GrowingArray.h>
 #include <StaticArray.h>
+#include <Vector2f.h>
 
 namespace Easy2D
 {
@@ -19,7 +20,10 @@ public:
 	~RenderComponentManager();
 
 	void Create(Entity aEntity, const std::string& aPath, Easy2D::ResourceManager& aResourceManager);
+
+	void OnBeginFrame() override;
 	void Update(float aDelta) override;
+	void OnEndFrame() override {};
 	void Render() override;
 	unsigned int GetID() override;
 
@@ -31,6 +35,7 @@ private:
 	{
 		Entity myOwner;
 		Easy2D::Sprite* mySprite;
+		CU::Vector2f myPosition;
 	};
 
 	CU::GrowingArray<RenderData> myData;

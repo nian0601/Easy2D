@@ -65,8 +65,15 @@ namespace Easy2D
 
 			myTotalTime = float(SDL_GetTicks());
 
+			if (myInput->KeyDown(eKey::_ESCAPE))
+			{
+				myShouldQuit = true;
+			}
+
+			OnBeginFrame();
 			Update();
 			Render();
+			OnEndFrame();
 
 			myPreviousTime = myTotalTime;
 		}
@@ -113,6 +120,14 @@ namespace Easy2D
 		}
 	}
 
+	void Engine::OnBeginFrame()
+	{
+		for each (IComponentManager* manager in myComponentManagers)
+		{
+			manager->OnBeginFrame();
+		}
+	}
+
 	void Engine::Update()
 	{
 		float deltaTime = (myTotalTime - myPreviousTime) / 1000.f;
@@ -136,6 +151,14 @@ namespace Easy2D
 		myGame.Render();
 
 		myRenderer->Present();
+	}
+
+	void Engine::OnEndFrame()
+	{
+		for each (IComponentManager* manager in myComponentManagers)
+		{
+			manager->OnEndFrame();
+		}
 	}
 
 }

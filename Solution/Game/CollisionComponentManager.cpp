@@ -37,32 +37,46 @@ void CollisionComponentManager::Create(Entity aOwner, const Easy2D::Rect& aRect)
 	myLookup[aOwner] = myCollisionData.Size() - 1;
 }
 
-void CollisionComponentManager::Update(float)
+void CollisionComponentManager::OnBeginFrame()
 {
 	for (CollisionData& data : myCollisionData)
 	{
 		data.myPosition = &myPositionManager.GetPosition(data.myOwner);
 		data.myRect.Update(*data.myPosition);
+		data.myCollided = false;
 	}
+}
 
+void CollisionComponentManager::Update(float)
+{
 	int size = myCollisionData.Size();
 	for (int i = 0; i < size; ++i)
 	{
-		const CollisionData& data1 = myCollisionData[i];
+		CollisionData& data1 = myCollisionData[i];
 
 		for (int j = i + 1; j < size; ++j)
 		{
-			const CollisionData& data2 = myCollisionData[j];
+			CollisionData& data2 = myCollisionData[j];
 
-			//if (data1.myOwner != data2.myOwner && Collision(*data1.myPosition, data1.myRadius, *data2.myPosition, data2.myRadius) == true)
 			if (data1.myOwner != data2.myOwner && Collision(data1.myRect, data2.myRect) == true)
 			{
-				//myMovementManager.Reflect(data1.myOwner);
-				//myMovementManager.Reflect(data2.myOwner);
-
-				myMovementManager.SetVelocity(data1.myOwner, CU::GetNormalized(*data1.myPosition - *data2.myPosition) * 200.f);
-				myMovementManager.SetVelocity(data2.myOwner, CU::GetNormalized(*data2.myPosition - *data1.myPosition) * 200.f);
+				data1.myResultingVelocity = CU::GetNormalized(*data1.myPosition - *data2.myPosition) * 200.f;
+				data2.myResultingVelocity = CU::GetNormalized(*data2.myPosition - *data1.myPosition) * 200.f;
+				
+				data1.myCollided = true;
+				data2.myCollided = true;
 			}
+		}
+	}
+}
+
+void CollisionComponentManager::OnEndFrame()
+{
+	for (CollisionData& data : myCollisionData)
+	{
+		if (data.myCollided == true)
+		{
+			myMovementManager.SetVelocity(data.myOwner, data.myResultingVelocity);
 		}
 	}
 }

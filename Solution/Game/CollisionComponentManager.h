@@ -17,7 +17,9 @@ public:
 	void Create(Entity aOwner, float aRadius);
 	void Create(Entity aOwner, const Easy2D::Rect& aRect);
 
+	void OnBeginFrame() override;
 	void Update(float) override;
+	void OnEndFrame() override;
 	void Render() override;
 	unsigned int GetID() override;
 
@@ -34,6 +36,8 @@ private:
 		float myRadius;
 		const CU::Vector2f* myPosition;
 		Easy2D::Rect myRect;
+		CU::Vector2f myResultingVelocity;
+		bool myCollided;
 	};
 
 	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;

@@ -25,7 +25,7 @@ void Game::Init(Easy2D::Engine& aEngine)
 	CollisionComponentManager& collisionManager = aEngine.CreateComponentManager<CollisionComponentManager>();
 
 	//for (int i = 0; i < MAX_ENTITY_COUNT; ++i)
-	for (int i = 0; i < 2000; ++i)
+	for (int i = 0; i < 100; ++i)
 	{
 		CU::Vector2f pos;
 		pos.x = float(rand() % 1280);
