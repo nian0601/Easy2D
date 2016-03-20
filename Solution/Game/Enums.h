@@ -6,5 +6,6 @@ enum eComponent
 	POSITION,
 	MOVEMENT,
 	COLLISION,
+	PADDLE,
 	__COUNT,
 };

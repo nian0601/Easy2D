@@ -60,4 +60,13 @@ namespace Easy2D
 		_BACKSPACE,
 		_TAB,
 	};
+
+	enum class eCollisionSide
+	{
+		NONE,
+		LEFT,
+		RIGHT,
+		TOP,
+		BOTTOM,
+	};
 }

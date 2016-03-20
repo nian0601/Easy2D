@@ -54,6 +54,10 @@ namespace Easy2D
 		{
 			myPreviousKeyStates[i] = myCurrentKeyStates[i];
 		}
+
+		SDL_GetMouseState(&myIntMousePosition.x, &myIntMousePosition.y);
+		myMousePosition.x = float(myIntMousePosition.x);
+		myMousePosition.y = float(myIntMousePosition.y);
 	}
 
 	int Input::GetSDLScanCode(eKey aKey) const

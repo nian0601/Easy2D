@@ -11,6 +11,9 @@
     </ClInclude>
     <ClInclude Include="GrowingArray.h" />
     <ClInclude Include="StaticArray.h" />
+    <ClInclude Include="Vector2i.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dummy.cpp" />

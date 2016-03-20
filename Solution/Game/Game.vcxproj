@@ -79,6 +79,7 @@
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MovementComponentManager.h" />
+    <ClInclude Include="PaddleComponentManager.h" />
     <ClInclude Include="PositionComponentManager.h" />
     <ClInclude Include="RenderComponentManager.h" />
   </ItemGroup>
@@ -86,6 +87,7 @@
     <ClCompile Include="CollisionComponentManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="MovementComponentManager.cpp" />
+    <ClCompile Include="PaddleComponentManager.cpp" />
     <ClCompile Include="PositionComponentManager.cpp" />
     <ClCompile Include="RenderComponentManager.cpp" />
   </ItemGroup>
