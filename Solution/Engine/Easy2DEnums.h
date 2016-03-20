@@ -1,4 +1,9 @@
 #pragma once
+#undef _SPACE
+#undef _LEFT
+#undef _RIGHT
+#undef _UP
+#undef _DOWN
 
 namespace Easy2D
 {
@@ -40,5 +45,28 @@ namespace Easy2D
 		_7,
 		_8,
 		_9,
+		_ESCAPE,
+		_LEFT,
+		_RIGHT,
+		_UP,
+		_DOWN,
+		_SPACE,
+		_LCTRL,
+		_RCTRL,
+		_LSHIFT,
+		_RSHIFT,
+		_LALT,
+		_RALT,
+		_BACKSPACE,
+		_TAB,
+	};
+
+	enum class eCollisionSide
+	{
+		NONE,
+		LEFT,
+		RIGHT,
+		TOP,
+		BOTTOM,
 	};
 }

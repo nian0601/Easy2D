@@ -41,8 +41,10 @@ namespace Easy2D
 		void operator=(Engine&) = delete;
 
 		void SetupSDL();
+		void OnBeginFrame();
 		void Update();
 		void Render();
+		void OnEndFrame();
 
 		SDL_Window* mySDLWindow;
 		Renderer* myRenderer;

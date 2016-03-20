@@ -54,6 +54,10 @@ namespace Easy2D
 		{
 			myPreviousKeyStates[i] = myCurrentKeyStates[i];
 		}
+
+		SDL_GetMouseState(&myIntMousePosition.x, &myIntMousePosition.y);
+		myMousePosition.x = float(myIntMousePosition.x);
+		myMousePosition.y = float(myIntMousePosition.y);
 	}
 
 	int Input::GetSDLScanCode(eKey aKey) const
@@ -96,6 +100,20 @@ namespace Easy2D
 		case Easy2D::eKey::_7: return SDL_SCANCODE_7; break;
 		case Easy2D::eKey::_8: return SDL_SCANCODE_8; break;
 		case Easy2D::eKey::_9: return SDL_SCANCODE_9; break;
+		case Easy2D::eKey::_ESCAPE: return SDL_SCANCODE_ESCAPE; break;
+		case Easy2D::eKey::_LEFT: return SDL_SCANCODE_LEFT; break;
+		case Easy2D::eKey::_RIGHT: return SDL_SCANCODE_RIGHT; break;
+		case Easy2D::eKey::_UP: return SDL_SCANCODE_UP; break;
+		case Easy2D::eKey::_DOWN: return SDL_SCANCODE_DOWN; break;
+		case Easy2D::eKey::_SPACE: return SDL_SCANCODE_SPACE; break;
+		case Easy2D::eKey::_LCTRL: return SDL_SCANCODE_LCTRL; break;
+		case Easy2D::eKey::_RCTRL: return SDL_SCANCODE_RCTRL; break;
+		case Easy2D::eKey::_LSHIFT: return SDL_SCANCODE_LSHIFT; break;
+		case Easy2D::eKey::_RSHIFT: return SDL_SCANCODE_RSHIFT; break;
+		case Easy2D::eKey::_LALT: return SDL_SCANCODE_LALT; break;
+		case Easy2D::eKey::_RALT: return SDL_SCANCODE_RALT; break;
+		case Easy2D::eKey::_BACKSPACE: return SDL_SCANCODE_BACKSPACE; break;
+		case Easy2D::eKey::_TAB: return SDL_SCANCODE_TAB; break;
 		}
 
 		assert(!"Invalid input key, convertion to SDLScanCode not implemented yet");

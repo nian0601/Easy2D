@@ -17,11 +17,13 @@ public:
 	~MovementComponentManager();
 
 	void Create(Entity aEntity, const CU::Vector2f& aStartVelocity);
+
+	void OnBeginFrame() override;
 	void Update(float) override;
+	void OnEndFrame() override;
 	void Render() override;
 	unsigned int GetID() override;
 
-	void Reflect(Entity aEntity);
 	void SetVelocity(Entity aEntity, const CU::Vector2f& aVelocity);
 
 private:
@@ -34,6 +36,7 @@ private:
 	{
 		Entity myOwner;
 		CU::Vector2f myVelocity;
+		CU::Vector2f myPosition;
 	};
 
 	CU::GrowingArray<MovementData> myData;
