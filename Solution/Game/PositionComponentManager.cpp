@@ -38,5 +38,5 @@ void PositionComponentManager::SetPosition(Entity aEntity, const CU::Vector2f& a
 
 unsigned int PositionComponentManager::GetID()
 {
-	return eComponent::POSITION;
+	return eComponent::POSITION_COMPONENT;
 }

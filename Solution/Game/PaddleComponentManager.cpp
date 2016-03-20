@@ -7,7 +7,7 @@
 PaddleComponentManager::PaddleComponentManager(Easy2D::Engine& aEngine)
 	: IComponentManager(aEngine)
 	, myInput(aEngine.GetInput())
-	, myPositionManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION)))
+	, myPositionManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION_COMPONENT)))
 	, myData(16)
 {
 }
@@ -55,5 +55,5 @@ void PaddleComponentManager::Render()
 
 unsigned int PaddleComponentManager::GetID()
 {
-	return eComponent::PADDLE;
+	return eComponent::PADDLE_COMPONENT;
 }

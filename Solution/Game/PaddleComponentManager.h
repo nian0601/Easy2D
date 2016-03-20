@@ -24,6 +24,7 @@ public:
 	unsigned int GetID() override;
 
 private:
+	void operator=(PaddleComponentManager&) = delete;
 	const Easy2D::Input& myInput;
 
 	struct PaddleData

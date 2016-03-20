@@ -15,7 +15,9 @@
     <ClInclude Include="CollisionComponentManager.h">
       <Filter>EntitySystem</Filter>
     </ClInclude>
-    <ClInclude Include="PaddleComponentManager.h" />
+    <ClInclude Include="PaddleComponentManager.h">
+      <Filter>EntitySystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
@@ -31,7 +33,9 @@
     <ClCompile Include="CollisionComponentManager.cpp">
       <Filter>EntitySystem</Filter>
     </ClCompile>
-    <ClCompile Include="PaddleComponentManager.cpp" />
+    <ClCompile Include="PaddleComponentManager.cpp">
+      <Filter>EntitySystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EntitySystem">

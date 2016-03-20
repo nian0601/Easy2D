@@ -6,8 +6,8 @@
 
 CollisionComponentManager::CollisionComponentManager(Easy2D::Engine& aEngine)
 	: IComponentManager(aEngine)
-	, myMovementManager(static_cast<MovementComponentManager&>(aEngine.GetComponentManager(eComponent::MOVEMENT)))
-	, myPositionManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION)))
+	, myMovementManager(static_cast<MovementComponentManager&>(aEngine.GetComponentManager(eComponent::MOVEMENT_COMPONENT)))
+	, myPositionManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION_COMPONENT)))
 	, myCollisionData(16)
 	, myCollisionResults(16)
 {
@@ -18,11 +18,13 @@ CollisionComponentManager::~CollisionComponentManager()
 {
 }
 
-void CollisionComponentManager::Create(Entity aOwner, const Easy2D::Rect& aRect)
+void CollisionComponentManager::Create(Entity aOwner, const Easy2D::Rect& aRect, unsigned int aCollisionGroup, unsigned int aCollisionFilter)
 {
 	CollisionData data;
 	data.myOwner = aOwner;
 	data.myRect = aRect;
+	data.myCollisionGroup = aCollisionGroup;
+	data.myCollisionFilter = aCollisionFilter;
 
 	myCollisionData.Add(data);
 	myLookup[aOwner] = myCollisionData.Size() - 1;
@@ -47,7 +49,7 @@ void CollisionComponentManager::Update(float)
 		{
 			CollisionData& data2 = myCollisionData[j];
 
-			if (data1.myOwner != data2.myOwner && Collision(data1.myRect, data2.myRect) == true)
+			if (CanCollide(data1, data2) == true && Collision(data1.myRect, data2.myRect) == true)
 			{
 				CollisionResult result;
 				result.myFirst = data1.myOwner;
@@ -73,7 +75,15 @@ void CollisionComponentManager::Render()
 
 unsigned int CollisionComponentManager::GetID()
 {
-	return eComponent::COLLISION;
+	return eComponent::COLLISION_COMPONENT;
+}
+
+bool CollisionComponentManager::CanCollide(const CollisionData& aData1, const CollisionData& aData2) const
+{
+	if (aData1.myOwner == aData2.myOwner) return false;
+	if ((aData1.myCollisionGroup & aData2.myCollisionFilter) > 0) return true;
+
+	return false;
 }
 
 bool CollisionComponentManager::Collision(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const

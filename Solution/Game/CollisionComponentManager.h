@@ -15,7 +15,7 @@ public:
 	CollisionComponentManager(Easy2D::Engine& aEngine);
 	~CollisionComponentManager();
 
-	void Create(Entity aOwner, const Easy2D::Rect& aRect);
+	void Create(Entity aOwner, const Easy2D::Rect& aRect, unsigned int aCollisionGroup, unsigned int aCollisionFilter);
 
 	void OnBeginFrame() override;
 	void Update(float) override;
@@ -27,13 +27,12 @@ private:
 	CollisionComponentManager(CollisionComponentManager&) = delete;
 	void operator=(CollisionComponentManager&) = delete;
 
-	bool Collision(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
-	Easy2D::eCollisionSide GetCollisionSide(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
-
 	struct CollisionData
 	{
 		Entity myOwner;
 		Easy2D::Rect myRect;
+		unsigned int myCollisionGroup;
+		unsigned int myCollisionFilter;
 	};
 
 	struct CollisionResult
@@ -42,6 +41,12 @@ private:
 		Entity mySecond;
 		Easy2D::eCollisionSide myCollisionSide;
 	};
+
+	bool CanCollide(const CollisionData& aData1, const CollisionData& aData2) const;
+	bool Collision(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
+	Easy2D::eCollisionSide GetCollisionSide(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
+
+	
 
 
 	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;

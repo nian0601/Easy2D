@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Enums.h"
 #include <Engine.h>
 #include <ResourceManager.h>
 #include <Sprite.h>
@@ -37,6 +38,8 @@ void Game::Init(Easy2D::Engine& aEngine)
 			Entity brick = aEngine.CreateEntity();
 			renderManager.Create(brick, "Data/brick.bmp", aEngine.GetResourceManager());
 			positionManager.Create(brick, position);
+			collisionManager.Create(brick, Easy2D::Rect(CU::Vector2f(128.f, 32.f)), eCollisionGroup::BRICK, 0);
+
 		}
 	}
 
@@ -47,7 +50,7 @@ void Game::Init(Easy2D::Engine& aEngine)
 	renderManager.Create(paddle, "Data/paddle.bmp", aEngine.GetResourceManager());
 	positionManager.Create(paddle, position);
 	paddleManager.Create(paddle);
-	collisionManager.Create(paddle, Easy2D::Rect(CU::Vector2f(128.f, 16.f)));
+	collisionManager.Create(paddle, Easy2D::Rect(CU::Vector2f(128.f, 16.f)), eCollisionGroup::PADDLE, 0);
 
 
 	position.x = aEngine.GetWindowSize().x / 2.f;
@@ -56,7 +59,7 @@ void Game::Init(Easy2D::Engine& aEngine)
 	renderManager.Create(ball, "Data/ball.bmp", aEngine.GetResourceManager());
 	positionManager.Create(ball, position);
 	movementManager.Create(ball, CU::Vector2f(200.f, -200.f));
-	collisionManager.Create(ball, Easy2D::Rect(CU::Vector2f(8.f, 8.f)));
+	collisionManager.Create(ball, Easy2D::Rect(CU::Vector2f(8.f, 8.f)), eCollisionGroup::BALL, eCollisionGroup::PADDLE);
 }
 
 void Game::Update(float)

@@ -9,7 +9,7 @@ MovementComponentManager::MovementComponentManager(Easy2D::Engine& aEngine)
 	: IComponentManager(aEngine)
 	, myData(16)
 	, myInput(aEngine.GetInput())
-	, myPositionComponentManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION)))
+	, myPositionComponentManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION_COMPONENT)))
 	, myWindowSize(aEngine.GetWindowSize())
 {
 }
@@ -75,7 +75,7 @@ void MovementComponentManager::Render()
 
 unsigned int MovementComponentManager::GetID()
 {
-	return eComponent::MOVEMENT;
+	return eComponent::MOVEMENT_COMPONENT;
 }
 
 void MovementComponentManager::SetVelocity(Entity aEntity, const CU::Vector2f& aVelocity)

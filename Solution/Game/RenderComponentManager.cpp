@@ -8,7 +8,7 @@
 RenderComponentManager::RenderComponentManager(Easy2D::Engine& aEngine)
 	: IComponentManager(aEngine)
 	, myData(16)
-	, myPositionComponentManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION)))
+	, myPositionComponentManager(static_cast<PositionComponentManager&>(aEngine.GetComponentManager(eComponent::POSITION_COMPONENT)))
 {
 }
 
@@ -48,5 +48,5 @@ void RenderComponentManager::Render()
 
 unsigned int RenderComponentManager::GetID()
 {
-	return eComponent::POSITION;
+	return eComponent::POSITION_COMPONENT;
 }
