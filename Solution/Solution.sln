@@ -16,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommonUtilities", "CommonUtilities\CommonUtilities.vcxproj", "{C66E6D97-B345-493E-8ECD-5259D41CF2CA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Events", "Events\Events.vcxproj", "{28B987B3-5184-4021-AE46-D1E7C636C5CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -38,6 +40,10 @@ Global
 		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Debug|Win32.Build.0 = Debug|Win32
 		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Release|Win32.ActiveCfg = Release|Win32
 		{C66E6D97-B345-493E-8ECD-5259D41CF2CA}.Release|Win32.Build.0 = Release|Win32
+		{28B987B3-5184-4021-AE46-D1E7C636C5CE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28B987B3-5184-4021-AE46-D1E7C636C5CE}.Debug|Win32.Build.0 = Debug|Win32
+		{28B987B3-5184-4021-AE46-D1E7C636C5CE}.Release|Win32.ActiveCfg = Release|Win32
+		{28B987B3-5184-4021-AE46-D1E7C636C5CE}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
