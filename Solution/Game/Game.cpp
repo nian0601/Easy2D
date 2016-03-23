@@ -59,7 +59,9 @@ void Game::Init(Easy2D::Engine& aEngine)
 	renderManager.Create(ball, "Data/ball.bmp", aEngine.GetResourceManager());
 	positionManager.Create(ball, position);
 	movementManager.Create(ball, CU::Vector2f(200.f, -200.f));
-	collisionManager.Create(ball, Easy2D::Rect(CU::Vector2f(8.f, 8.f)), eCollisionGroup::BALL, eCollisionGroup::PADDLE);
+	collisionManager.Create(ball, Easy2D::Rect(CU::Vector2f(8.f, 8.f)), eCollisionGroup::BALL, eCollisionGroup::PADDLE | eCollisionGroup::BRICK);
+	paddleManager.Create(ball);
+
 }
 
 void Game::Update(float)

@@ -8,6 +8,8 @@ namespace Easy2D
 	class IComponentManager
 	{
 	public:
+		virtual ~IComponentManager(){};
+
 		virtual void OnBeginFrame() = 0;
 		virtual void OnEndFrame() = 0;
 		virtual void Update(float) = 0;

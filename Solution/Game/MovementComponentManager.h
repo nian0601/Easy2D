@@ -1,8 +1,10 @@
 #pragma once
 #include <IComponentManager.h>
-#include <Easy2DEnums.h>
+#include <IEventSubscriber.h>
+#include <GameEnums.h>
 #include <GrowingArray.h>
 #include <Vector2f.h>
+#include <StaticArray.h>
 
 namespace Easy2D
 {
@@ -10,7 +12,7 @@ namespace Easy2D
 }
 
 class PositionComponentManager;
-class MovementComponentManager : public Easy2D::IComponentManager
+class MovementComponentManager : public Easy2D::IComponentManager, public IEventSubscriber
 {
 public:
 	MovementComponentManager(Easy2D::Engine& aEngine);
@@ -25,12 +27,17 @@ public:
 	unsigned int GetID() override;
 
 	void SetVelocity(Entity aEntity, const CU::Vector2f& aVelocity);
+	CU::Vector2f GetVelocity(Entity aEntity) const;
+
+	void OnEvent(const CollisionEvent& aEvent);
 
 private:
 	MovementComponentManager(MovementComponentManager&) = delete;
 	void operator=(MovementComponentManager&) = delete;
 
 	bool Outside(float aObjectPos, float aMinPos, float aMaxPos) const;
+	void Reflect(Entity aEntity, eCollisionSide aCollisionSide);
+	eCollisionSide OppositeCollision(eCollisionSide aCollisionSide) const;
 
 	struct MovementData
 	{
@@ -40,6 +47,7 @@ private:
 	};
 
 	CU::GrowingArray<MovementData> myData;
+	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;
 	const Easy2D::Input& myInput;
 	PositionComponentManager& myPositionComponentManager;
 	const CU::Vector2f& myWindowSize;

@@ -6,6 +6,8 @@
 
 struct SDL_Window;
 
+class EventSystem;
+
 namespace Easy2D
 {
 	class Renderer;
@@ -26,6 +28,7 @@ namespace Easy2D
 
 		ResourceManager& GetResourceManager() const;
 		const Input& GetInput() const;
+		EventSystem& GetEventSystem() const;
 
 		Entity CreateEntity();
 
@@ -56,6 +59,7 @@ namespace Easy2D
 
 		CU::GrowingArray<IComponentManager*> myComponentManagers;
 		Entity myNextEntityID;
+		EventSystem* myEventSystem;
 
 		float myTotalTime;
 		float myPreviousTime;
@@ -69,6 +73,11 @@ namespace Easy2D
 	inline const Input& Engine::GetInput() const
 	{
 		return *myInput;
+	}
+
+	inline EventSystem& Engine::GetEventSystem() const
+	{
+		return *myEventSystem;
 	}
 
 	template <typename T>

@@ -42,14 +42,14 @@
     <OutDir>$(SolutionDir)..\Libs\</OutDir>
     <IntDir>$(SolutionDir)..\temp\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)CommonUtilities\;$(SolutionDir)..\SDL\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Events\;$(SolutionDir)CommonUtilities\;$(SolutionDir)..\SDL\Include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\SDL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)..\Libs\</OutDir>
     <IntDir>$(SolutionDir)..\temp\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)CommonUtilities\;$(SolutionDir)..\SDL\Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Events\;$(SolutionDir)CommonUtilities\;$(SolutionDir)..\SDL\Include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)..\SDL\Libs\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -115,6 +115,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CommonUtilities\CommonUtilities.vcxproj">
       <Project>{c66e6d97-b345-493e-8ecd-5259d41cf2ca}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Events\Events.vcxproj">
+      <Project>{28b987b3-5184-4021-ae46-d1e7c636c5ce}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

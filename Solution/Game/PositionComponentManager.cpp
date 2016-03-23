@@ -5,6 +5,10 @@ PositionComponentManager::PositionComponentManager(Easy2D::Engine& aEngine)
 	: IComponentManager(aEngine)
 	, myPositions(16)
 {
+	for (int& id : myLookup)
+	{
+		id = -1;
+	}
 }
 
 

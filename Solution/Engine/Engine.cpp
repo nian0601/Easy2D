@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "Engine.h"
+#include <EventSystem.h>
 #include "IComponentManager.h"
 #include "IGame.h"
 #include "Input.h"
@@ -22,6 +23,7 @@ namespace Easy2D
 		myRenderer = new Renderer(mySDLWindow);
 		myResourceManager = new ResourceManager(myRenderer->GetSDLRenderer());
 		myInput = new Input();
+		myEventSystem = new EventSystem();
 
 		myGame.Init(*this);
 
@@ -36,6 +38,8 @@ namespace Easy2D
 		delete myResourceManager;
 		delete myRenderer;
 		delete myInput;
+		delete myEventSystem;
+
 		SDL_DestroyWindow(mySDLWindow);
 		SDL_Quit();
 	}

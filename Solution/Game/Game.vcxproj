@@ -42,13 +42,13 @@
     <OutDir>$(SolutionDir)..\Libs\</OutDir>
     <IntDir>$(SolutionDir)..\temp\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)Engine\;$(SolutionDir)CommonUtilities\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Engine\;$(SolutionDir)Events\;$(SolutionDir)CommonUtilities\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)..\Libs\</OutDir>
     <IntDir>$(SolutionDir)..\temp\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)Engine\;$(SolutionDir)CommonUtilities\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Engine\;$(SolutionDir)Events\;$(SolutionDir)CommonUtilities\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,6 +97,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
       <Project>{9c7a1269-1de8-40fa-b258-b8e0a5c16018}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Events\Events.vcxproj">
+      <Project>{28b987b3-5184-4021-ae46-d1e7c636c5ce}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

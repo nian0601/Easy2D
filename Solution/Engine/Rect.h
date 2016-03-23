@@ -14,10 +14,12 @@ namespace Easy2D
 		{
 			myMin = aCenter - myExtents / 2.f;
 			myMax = aCenter + myExtents / 2.f;
+			myCenter = aCenter;
 		}
 
 		CU::Vector2f myMin;
 		CU::Vector2f myMax;
 		CU::Vector2f myExtents;
+		CU::Vector2f myCenter;
 	};
 }

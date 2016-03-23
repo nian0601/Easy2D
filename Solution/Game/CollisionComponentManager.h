@@ -1,14 +1,17 @@
 #pragma once
 
+#include <CollisionEvent.h>
 #include <IComponentManager.h>
 #include <GrowingArray.h>
 #include <StaticArray.h>
 
 #include <Rect.h>
-#include <Easy2DEnums.h>
+#include <GameEnums.h>
+
 
 class PositionComponentManager;
 class MovementComponentManager;
+class EventSystem;
 class CollisionComponentManager : public Easy2D::IComponentManager
 {
 public:
@@ -33,27 +36,20 @@ private:
 		Easy2D::Rect myRect;
 		unsigned int myCollisionGroup;
 		unsigned int myCollisionFilter;
-	};
-
-	struct CollisionResult
-	{
-		Entity myFirst;
-		Entity mySecond;
-		Easy2D::eCollisionSide myCollisionSide;
+		CU::Vector2f myVelocity;
 	};
 
 	bool CanCollide(const CollisionData& aData1, const CollisionData& aData2) const;
-	bool Collision(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
-	Easy2D::eCollisionSide GetCollisionSide(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
-
-	
+	bool Collision(const CollisionData& aFirst, const CollisionData& aSecond) const;
+	eCollisionSide GetCollisionSide(const Easy2D::Rect& aFirst, const Easy2D::Rect& aSecond) const;
 
 
 	CU::StaticArray<int, MAX_ENTITY_COUNT> myLookup;
 	CU::GrowingArray<CollisionData> myCollisionData;
-	CU::GrowingArray<CollisionResult> myCollisionResults;
+	CU::GrowingArray<CollisionEvent> myCollisionEvents;
 
 	PositionComponentManager& myPositionManager;
 	MovementComponentManager& myMovementManager;
+	EventSystem& myEventSystem;
 };
 

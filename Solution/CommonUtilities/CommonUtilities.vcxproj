@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameEnums.h" />
     <ClInclude Include="GrowingArray.h" />
     <ClInclude Include="StaticArray.h" />
     <ClInclude Include="Vector2f.h" />
